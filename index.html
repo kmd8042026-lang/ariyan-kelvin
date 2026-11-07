@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOWPEICE OF UNIVERSE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #03010d;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Universe background */
+#stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse at 20% 20%, #241052 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 70%, #101b55 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 100%, #370d42 0%, transparent 50%),
+      #03010d;
+}
+
+#stars::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(#9e8aff 1px, transparent 1px);
+    background-size: 75px 75px, 120px 120px;
+    background-position: 0 0, 40px 50px;
+    animation: starsMove 35s linear infinite;
+}
+
+@keyframes starsMove {
+    to { background-position: 300px 600px, 500px 200px; }
+}
+
+/* Navbar */
+header {
+    width: 100%;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 2, 20, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(150, 100, 255, .2);
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 19px;
+    font-weight: 900;
+    color: #bda5ff;
+    text-shadow: 0 0 15px #8b5cff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #b99aff;
+    text-shadow: 0 0 12px #9b6cff;
+}
+
+.menu-btn {
+    display: none;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 70px;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.small-title {
+    color: #b99aff;
+    letter-spacing: 7px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(35px, 7vw, 75px);
+    line-height: 1.3;
+    background: linear-gradient(90deg, #fff, #a68bff, #65d8ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 35px rgba(130, 90, 255, .3);
+}
+
+.hero p {
+    color: #c1b8d9;
+    margin: 22px 0 35px;
+    letter-spacing: 3px;
+    font-size: 16px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    border: 1px solid #a78bff;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(90deg, #6b35c9, #2859bd);
+    box-shadow: 0 0 25px rgba(120, 75, 255, .4);
+    transition: .4s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px #8b5cff;
+}
+
+/* Sections */
+section:not(.hero) {
+    padding: 100px 8%;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(25px, 4vw, 38px);
+    text-align: center;
+    margin-bottom: 15px;
+    color: #c4afff;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #aaa0c4;
+    margin-bottom: 55px;
+}
+
+/* Products */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: rgba(30, 20, 65, .6);
+    border: 1px solid rgba(160, 120, 255, .3);
+    border-radius: 18px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 25px;
+    transition: .4s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: #a78bff;
+    box-shadow: 0 0 30px rgba(120, 75, 255, .3);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin: 20px 0 8px;
+}
+
+.product-card p {
+    color: #b99aff;
+    margin-bottom: 18px;
+}
+
+/* About */
+.about-content {
+    max-width: 850px;
+    margin: auto;
+    padding: 40px;
+    border: 1px solid rgba(150, 120, 255, .3);
+    background: rgba(30, 20, 65, .5);
+    border-radius: 20px;
+    text-align: center;
+    line-height: 2;
+    color: #d0c8e5;
+}
+
+/* Contact */
+.contact-box {
+    max-width: 650px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid rgba(150, 120, 255, .4);
+    background: rgba(30, 20, 65, .6);
+}
+
+.contact-box input,
+.contact-box textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border: 1px solid #57418c;
+    border-radius: 10px;
+    background: #100a26;
+    color: white;
+    outline: none;
+    font-family: inherit;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus {
+    border-color: #a78bff;
+    box-shadow: 0 0 12px #6540a9;
+}
+
+.contact-box textarea {
+    height: 130px;
+    resize: vertical;
+}
+
+.contact-box button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#formMessage {
+    color: #b99aff;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #332253;
+    color: #968ba9;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+        background: #09051b;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    header {
+        padding: 20px 5%;
+    }
+
+    .logo {
+        font-size: 14px;
+    }
+
+    section:not(.hero) {
+        padding: 75px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<header>
+    <div class="logo">✦ SHOWPEICE OF UNIVERSE</div>
+
+    <nav id="navbar">
+        <a href="#home">HOME</a>
+        <a href="#products">PRODUCTS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- HOME PAGE -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="small-title">✦ EXPLORE THE INFINITE ✦</div>
+
+        <h1>SHOWPEICE<br>OF UNIVERSE</h1>
+
+        <p>LOOKS LIKE REAL</p>
+
+        <a href="#products" class="btn">EXPLORE COLLECTION ✦</a>
+    </div>
+</section>
+
+<!-- PRODUCTS PAGE -->
+<section id="products">
+    <h2 class="section-title">OUR COLLECTION</h2>
+    <p class="section-subtitle">Discover the beauty of the universe</p>
+
+    <div class="products">
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600" alt="Galaxy">
+            <h3>Galaxy Art</h3>
+            <p>$49.99</p>
+            <a href="#contact" class="btn">Explore</a>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=600" alt="Planet">
+            <h3>Planet Collection</h3>
+            <p>$59.99</p>
+            <a href="#contact" class="btn">Explore</a>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600" alt="Earth">
+            <h3>Earth Universe</h3>
+            <p>$39.99</p>
+            <a href="#contact" class="btn">Explore</a>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=600" alt="Stars">
+            <h3>Cosmic Stars</h3>
+            <p>$29.99</p>
+            <a href="#contact" class="btn">Explore</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="about">
+    <h2 class="section-title">ABOUT OUR UNIVERSE</h2>
+    <p class="section-subtitle">A world beyond imagination</p>
+
+    <div class="about-content">
+        <p>
+            Welcome to <strong>SHOWPEICE OF UNIVERSE</strong>,
+            where imagination meets reality.
+            <br><br>
+            Our mission is to bring the incredible beauty
+            of galaxies, planets, stars and cosmic wonders
+            into one amazing experience.
+            <br><br>
+            We believe that the universe is not just something
+            to look at. It is something to experience.
+            <br><br>
+            <strong>LOOKS LIKE REAL ✦</strong>
+        </p>
+    </div>
+</section>
+
+<!-- CONTACT PAGE -->
+<section id="contact">
+    <h2 class="section-title">CONTACT US</h2>
+    <p class="section-subtitle">Let's connect across the universe</p>
+
+    <div class="contact-box">
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="text" id="subject" placeholder="Subject" required>
+            <textarea id="message" placeholder="Your Message..." required></textarea>
+            <button type="submit" class="btn">SEND MESSAGE ✦</button>
+            <p id="formMessage"></p>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>✦ SHOWPEICE OF UNIVERSE ✦</p>
+    <p>LOOKS LIKE REAL</p>
+    <br>
+    <p>© 2026 All Rights Reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+
+document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navbar").classList.remove("active");
+    });
+});
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+
+    document.getElementById("formMessage").textContent =
+        "Thank you " + name + "! Your message is ready. Connect an email service to receive it.";
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>
